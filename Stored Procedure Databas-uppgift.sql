@@ -2,15 +2,15 @@ CREATE PROCEDURE DisplayStudentInfo
     @StudentID INT
 AS
 BEGIN
-    SELECT StudentID, FullName, SocialSecurityNumber, ContactInfo    
+    SELECT *    
 	FROM Students
     WHERE StudentID = @StudentID;
 END;
---Ett exempel pÂ studenten med id 3
+--Ett exempel p√• studenten med id 3
 EXEC DisplayStudentInfo @StudentID = 3
 
 GO
---Transaction som s‰tter ett betyg utifrÂn Student- och kursID i StudentCourse
+--Transaction som s√§tter ett betyg utifr√•n Student- och kursID i StudentCourse
 CREATE PROCEDURE SetGrade
     @StudentID INT,
     @CourseID INT,
@@ -33,7 +33,7 @@ END;
 
 DROP PROCEDURE SetGrade
 
---Exempel pÂ SetGrade
+--Exempel p√• SetGrade
 EXEC SetGrade @StudentID = 3, @CourseID = 2, @Grade = B
 
 SELECT * FROM StudentCourse
